@@ -78,7 +78,6 @@ body{
   border: none;
   font: inherit;
   cursor: pointer;
-  
 }
 #sidebar svg{
   flex-shrink: 0;
@@ -141,6 +140,8 @@ body{
 
 main{
   padding: min(30px, 7%);
+  background: url('TankRec_background.png') no-repeat center center fixed;
+  background-size: cover;
 }
 main p{
   color: var(--secondary-text-clr);
@@ -207,6 +208,14 @@ hr {
 .map-result .map-answer {
   text-align: left;     /* align text to left */
   padding-left: 0.4rem !important;  /* override inherited 2em from #sidebar .sub-menu a */
+}
+
+#army-image {
+  max-height: 90vh;  /* optional: max height 80% of viewport height */
+  width: 100%;       /* scales down if smaller than max-width */
+  height: auto;      /* maintain aspect ratio */
+  object-fit: contain;
+  display: block;
 }
 
 #closeHelp {
