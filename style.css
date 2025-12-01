@@ -140,6 +140,8 @@ body{
 
 main{
   padding: min(30px, 7%);
+  background: url('TankRec_background.png') no-repeat center center fixed;
+  background-size: cover;
 }
 main p{
   color: var(--secondary-text-clr);
@@ -209,7 +211,7 @@ hr {
 }
 
 #army-image {
-  max-height: 95vh;  /* optional: max height 80% of viewport height */
+  max-height: 90vh;  /* optional: max height 80% of viewport height */
   width: 100%;       /* scales down if smaller than max-width */
   height: auto;      /* maintain aspect ratio */
   object-fit: contain;
