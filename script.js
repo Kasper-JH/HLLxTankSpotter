@@ -1,9 +1,12 @@
 // Main controls
 const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
-const toggleButton = document.getElementById('toggle-btn')
-const sidebar = document.getElementById('sidebar')
-const submenu2 = document.getElementById('variation')
+const toggleButton = document.getElementById('toggle-btn');
+const sidebar = document.getElementById('sidebar');
+const submenu2 = document.getElementById('variation');
+const openHelp = document.getElementById("openHelp");
+const closeHelp = document. getElementById("closeHelp");
+const help = document.getElementById("help");
 
 function toggleSidebar(){
   sidebar.classList.toggle('close')
@@ -268,6 +271,13 @@ window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
 
+openHelp.addEventListener("click", () => {
+    help.classList.add("open");
+})
+
+closeHelp.addEventListener("click", () => {
+    help.classList.remove("open");
+})
 
 
 
