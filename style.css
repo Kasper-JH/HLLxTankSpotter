@@ -209,11 +209,13 @@ hr {
 }
 
 #army-image {
-  max-width: 95vw;     /* limits image width */
-  width: 100%;          /* scales down if screen is smaller */
-  height: auto;         /* maintain aspect ratio */
-  object-fit: contain;  /* ensures image fits inside box */
+  max-width: 90vw;   /* max width is 90% of viewport width */
+  max-height: 85vh;  /* optional: max height 80% of viewport height */
+  width: 100%;       /* scales down if smaller than max-width */
+  height: auto;      /* maintain aspect ratio */
+  object-fit: contain;
   display: block;
+  margin-top: 3rem;
 }
 
 @media(max-width: 800px){
