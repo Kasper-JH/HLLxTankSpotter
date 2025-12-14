@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Hell Let Loose" content="Free Visual Tank Guide">
+  <meta name="Tank Recognition Tool" content="Free HLL Tool">
+  <meta name="author" content="Fjolle">
+  <title>HLL Tank Identifier</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/help.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">HLLxTankSpotter</span>
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+     <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="bi bi-house-gear" viewBox="0 0 16 16">
+  <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708z"/>
+  <path d="M11.886 9.46c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.044c-.613-.181-.613-1.049 0-1.23l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+</svg>
+          <span>Faction</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+      <div class="faction-select-group">
+            <li><a href="#" onclick="updateVariations(1)">Germany</a></li>
+            <li><a href="#" onclick="updateVariations(2)">United States</a></li>
+            <li><a href="#" onclick="updateVariations(3)">Soviet Union</a></li>
+            <li><a href="#" onclick="updateVariations(4)">British</a></li>
+      </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn" id="variation">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="bi bi-house-gear" viewBox="0 0 16 16">
+  <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+  <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8m-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7"/>
+</svg>
+          <span>Variation</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div class="variation-row">
+        <div class="variation-select-group">
+          <div id="variation-buttons"></div>
+        </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="bi bi-house-gear" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+</svg>
+          <span>Map Selector</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+         <div class="section map-selector">
+        <select id="map-select">
+          <option value="">— Choose a map —</option>
+          <option>Carentan</option>
+          <option>Driel</option>
+          <option>El Alamein</option>
+          <option>Elsenborn Ridge</option>
+          <option>Foy</option>
+          <option>Hill 400</option>
+          <option>Hürtgen Forest</option>
+          <option>Kharkov</option>
+          <option>Kursk</option>
+          <option>Mortain</option>
+          <option>Omaha Beach</option>
+          <option>Purple Heart Lane</option>
+          <option>Remagen</option>
+          <option>Sainte-Marie-du-Mont</option>
+          <option>Sainte-Mère-Église</option>
+          <option>Stalingrad</option>
+          <option>Smolensk</option>
+          <option>Tobruk</option>
+          <option>Utah Beach</option>
+        </select>
+        <div id="map-result" class="map-result">
+        </div>
+      </div>
+        </ul>
+      </li>
+      <li>
+        <hr class="line-sidebar">
+  <button id="openHelp" class="dropdown-btn">
+ <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="bi bi-house-gear" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+</svg>
+    <span>Need Help?</span>
+      </button> 
+      </li>
+  </nav>
+ <main>
+  <div id="image-container">
+
+
+ <!-- German -->
+  <div id="german-army-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Sturmpanzer IV Brummbär</p>
+    <img src="images/g1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, high side-armour outside of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Armored PUMA Scout</p>
+    <img src="images/g2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Puma</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer II Luchs</p>
+    <img src="images/g3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Luchs</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, big antenna, blood in front</p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer IV</p>
+    <img src="images/g4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Panzer IV</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Green & yellow simple camouflage, “413” on side, plus symbol on front sides </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Panzer V Panther</p>
+    <img src="images/g5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Panther</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Yellow, green & red rough camouflage, “801” on side, half-covered tracks, sloped front</p>
+  </div>
+<div class="tank-card">
+    <p class="tank-name">Tiger 1</p>
+    <img src="images/g6.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Tiger</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Yellow, green and brown striped camouflage, “219” on turret, “Anita” on front, squared body</p>
+  </div>
+  </div>
+
+  <div id="german-winter-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Sturmpanzer IV Brummbär</p>
+    <img src="images/g1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, high side-armour outside of tracks </p>
+  </div>
+      <div class="tank-card">
+    <p class="tank-name">Armored PUMA Scout</p>
+    <img src="images/gw2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Puma</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer II Luchs</p>
+    <img src="images/gw3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Luchs</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, big antenna, blood in front</p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer IV</p>
+    <img src="images/gw4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Panzer IV</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small wheels in tracks, “413” on side, plus symbol on front sides </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Panzer V Panther</p>
+    <img src="images/gw5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Panther</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> “801” on side, half-covered tracks, sloped front</p>
+  </div>
+<div class="tank-card">
+    <p class="tank-name">Tiger 1</p>
+    <img src="images/gw6.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Tiger</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> “219” on turret, squared body, spikes on the back of the turret</p>
+  </div>
+  </div>
+    
+  <div id="german-africa-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Panzer III Ausf.N</p>
+    <img src="images/ga1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, “142” on side, plus symbol on front sides </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Armored PUMA Scout</p>
+    <img src="images/ga2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Puma</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer II Luchs</p>
+    <img src="images/ga3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Luchs</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, big antenna, blood in front</p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Panzer IV</p>
+    <img src="images/ga4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Panzer IV</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small wheels in tracks, “413” on side, plus sign on front sides </p>
+  </div>
+<div class="tank-card">
+    <p class="tank-name">Tiger 1</p>
+    <img src="images/ga5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Tiger</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> “219” on turret, squared body </p>
+  </div>
+  </div>
+    
+  <!-- US -->
+  <div id="us-army-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Sherman M4A3 105</p>
+    <img src="images/us1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, blue stripes, star on front </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M8 Greyhound</p>
+    <img src="images/us2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Greyhound</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M3 Stuart</p>
+    <img src="images/us3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Stuart</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, woman on side, star on front</p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M4 Sherman</p>
+    <img src="images/us4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: M4</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Star symbol in a circle on front, star symbol on sides, medium barrel with “Hades” written on it </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Sherman Jumbo 75mm</p>
+    <img src="images/us5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: 75</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Bags on the sides & behind the turret, box on front, medium barrel, no star symbol </p>
+  </div>
+<div class="tank-card">
+    <p class="tank-name">Sherman Jumbo 76mm</p>
+    <img src="images/us6.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: 76</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Bags on the sides & behind the turret, box on front, star symbol in front and sides of turret, long barrel</p>
+  </div>
+  </div>
+    
+    <div id="us-winter-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Sherman M4A3 105</p>
+    <img src="images/uw1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, blue stripes, star on front </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M8 Greyhound</p>
+    <img src="images/uw2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Greyhound</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M3 Stuart</p>
+    <img src="images/uw3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Stuart</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, woman on side, star on front</p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M4 Sherman</p>
+    <img src="images/uw4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: M4</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Star symbol in a circle on front, star symbol on sides, medium barrel with “Hades” written on it </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Sherman Jumbo 75mm</p>
+    <img src="images/uw5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: 75</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Bags on the sides & behind the turret, box on front, medium barrel, no star symbol </p>
+  </div>
+<div class="tank-card">
+    <p class="tank-name">Sherman Jumbo 76mm</p>
+    <img src="images/uw6.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: 76</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Bags on the sides & behind the turret, box on front, star symbol in front and sides of turret, long barrel</p>
+  </div>
+  </div>
+    
+      <!-- SOVIET -->
+  <div id="soviet-army-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">KV-2</p>
+    <img src="images/s1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> short barrel, squared turret </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Armored BA-10M Scout</p>
+    <img src="images/s2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Scout</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">T-70</p>
+    <img src="images/s3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: T-70</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, hard edges </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">T-34</p>
+    <img src="images/s4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: T-34</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Boxes on side, white text and small red star on turret, narrow turret, medium barrel </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">IS-1 Iosef Stalin</p>
+    <img src="images/s5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: IS-1</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Boxes & cylinders on side, red star on turret, long barrel, broad turret </p>
+  </div>
+  </div>
+    
+  <div id="soviet-winter-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">KV-2</p>
+    <img src="images/sw1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> short barrel, squared turret </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Armored BA-10M Scout</p>
+    <img src="images/sw2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Scout</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">T-70</p>
+    <img src="images/sw3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: T-70</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, hard edges </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">T-34</p>
+    <img src="images/sw4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: T-34</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Boxes on side, white text and small red star on turret, narrow turret, medium barrel </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">IS-1 Iosef Stalin</p>
+    <img src="images/sw5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: IS-1</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Boxes & cylinders on side, red star on turret, long barrel, broad turret </p>
+  </div>
+  </div>
+    
+      <!-- BRITISH -->
+  <div id="british-army-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Churchill Mk III A.V.R.E.</p>
+    <img src="images/b1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short cylinder barrel, flat yellow muzzle </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Daimler Armoured Scout</p>
+    <img src="images/b2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Daimler</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Tetrarch</p>
+    <img src="images/b3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Tetrarch</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Cromwell Mk. IV</p>
+    <img src="images/b4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Cromwell</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Dark exterior, medium length barrel. Icons: White triangle, "45" on green/blue sign </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Churchill Mk. VII</p>
+    <img src="images/b5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Churchill</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Unique shape, short barrel, small wheels </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Sherman Firefly</p>
+    <img src="images/b6.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Sherman</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Tall sloped shape, “13” on the side </p>
+  </div>
+  </div>
+    
+  <div id="british-eighth-block" class="image-block">
+  <div class="tank-card">
+    <p class="tank-name">Bishop SP 25pdr</p>
+    <img src="images/be1.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: SPA</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, squared turret </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Daimler Armoured Scout</p>
+    <img src="images/be2.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Recon</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Daimler</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Wheels instead of tracks </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">M3 Stuart</p>
+    <img src="images/be3.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Light</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Stuart</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Small body, fast driving speed, small barrel, blue color </p>
+  </div>
+  <div class="tank-card">
+    <p class="tank-name">Crusader Mk. III</p>
+    <img src="images/be4.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Medium</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Crusader</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Sharp edges, blue color, medium barrel </p>
+  </div>
+    <div class="tank-card">
+    <p class="tank-name">Churchill Mk. VII</p>
+    <img src="images/be5.jpg" onClick="imageClass(this)" id="imgFS">
+      <p class="tank-type" id="tank-stuff">Type: Heavy</p>
+      <p class="tank-callsign" id="tank-stuff">Callsign: Churchill</p>
+      <hr class="tank-line" />
+      <p class="small" id="details"><strong>Details:</strong> Unique shape, short barrel, small wheels </p>
+  </div>
+  </div>
+</div>
+</main>
+
+<div class="imgFSbox" id="imgFSbox" onClick="imageClassBox()">
+</div>
+
+<div class="help" id="help">
+    <div class="help-inner">
+      <hr class="help-top"/>
+      <h3>How To Use HLLxTankSpotter</h3>
+      <p class="help-intro-cost ">
+        This tool is designed to help you quickly identify and call out tanks in Hell Let Loose based on their visual characteristics. 
+
+      </p>
+      <p class="help-description"> <strong>Type:</strong> Describes whether the tank is an SPA, Recon, Light, Medium or Heavy.</p>
+      <p class="help-description"> <strong>Callsign:</strong> Commonly used name for the tank, which is often used in the leadership voicechat.</p>
+      <p class="help-description"> <strong>Details:</strong> Highlights specific visual features to help you distinguish between different tank models.</p>
+
+      <h4> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="help-faction" viewBox="0 0 16 16">
+  <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708z"/>
+  <path d="M11.886 9.46c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.044c-.613-.181-.613-1.049 0-1.23l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+</svg>
+          Faction</h4>
+      <p>
+        Choose the faction of your enemy (Germany, United States, Soviet Union, or British).
+      </p>
+    
+     <h4> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="help-faction" viewBox="0 0 16 16">
+  <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+  <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8m-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7"/>
+</svg>
+          Variation</h4>
+
+      <p>
+        Pick the specific variation of tanks appearance you are encountering (e.g. Winter camo).
+      </p>
+        <h4> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#e8eaed" class="help-faction" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/>
+</svg>
+          Map Selector</h4>
+      <p class="help-map-cost">Not sure which Faction or Variation to pick?</p>
+      <p>
+        Use the Map Selector to find out which factions and variations are present on the map you are playing on.
+      </p>
+      <button id="closeHelp" class="closeHelp">Close</button>
+      <hr class="help-bottom"/>
+    </div>
+  </div>
+  <script src="js/imgfs.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/help.js"></script>
+</body>
+</html>

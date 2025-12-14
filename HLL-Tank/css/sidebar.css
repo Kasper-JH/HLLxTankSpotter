@@ -1,0 +1,163 @@
+#sidebar,
+#sidebar * {
+  font-family: var(--ff);
+}
+#sidebar{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--clr-bg-b);
+  border-right: 1px solid var(--clr-line-a);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  text-wrap: nowrap;
+}
+#sidebar.close{
+  padding: 5px;
+  width: 50px;
+}
+#sidebar ul{
+  list-style: none;
+}
+#sidebar > ul > li:first-child{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  .logo{
+    color: var(--clr-accent-b0);
+    font: var(--h4)
+  }
+}
+#sidebar ul li a{
+  color: var(--clr-text-a0);
+}
+#sidebar ul li svg{
+    fill: var(--clr-text-a0);
+  }
+#sidebar .arrow{
+  fill: var(--clr-accent-b3);
+  opacity: 50%;
+}
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration: none;
+  color: var(--clr-text-a0);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+ 
+}
+.dropdown-btn{
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;  
+}
+#sidebar svg{
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Sidebar label spans use the centralized preset */
+#sidebar a span, #sidebar .dropdown-btn span, #sidebar .sub-menu a span {
+  flex-grow: 1;
+  font: var(--sidebar-label-font);
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+  background-color: var(--clr-bg-a1);
+}
+#sidebar .sub-menu{
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-left: 0.8em;
+  transition: 300ms ease-in-out;
+  font: var(--p);
+
+  > div{
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu.show{
+  grid-template-rows: 1fr;
+}
+
+/* ensure no :before/:after pseudo-elements are visible */
+#sidebar .sub-menu::before,
+#sidebar .sub-menu::after {
+  display: none !important;
+}
+.dropdown-btn svg{
+  transition: 200ms ease;
+}
+.rotate svg:last-child{
+  rotate: 180deg;
+}
+
+#toggle-btn{
+  margin-left: auto;
+  padding: 1em;
+  border: none;
+  border-radius: .5em;
+  background: none;
+  cursor: pointer;
+
+  svg{
+    transition: rotate 150ms ease;
+  }
+}
+#toggle-btn:hover{
+  background-color: var(--clr-bg-a1);
+}
+
+/* Style the <select> so it matches other UI elements */
+.map-selector select {
+  width: 100%;
+  background-color: var(--clr-bg-b1);
+  color: var(--clr-text-a1);
+  border: 0.5px solid var(--clr-line-b);
+  border-radius: 0.5em;
+  text-align: center;
+  padding: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;       /* Removes default OS arrow */
+  margin-top: var(--margin-s);
+  margin-bottom: var(--margin-m);
+}
+
+.map-answer-p {
+  color: var(--gray70);
+  font-style: italic !important;
+  margin-top: var(--margin-xs) !important;
+}
+/* Hover + focus states (same style as sidebar buttons) */
+.map-selector select:hover {
+  background-color: var(--clr-bg-b2);
+}
+
+.map-selector select:focus {
+  background-color: var(--clr-bg-a);
+  border-color: var(--clr-line-a);
+}
+
+#map-answer-design {
+  padding: 0.5em 1em !important;
+  margin-bottom: var(--margin-xs);
+}
+
+.line-sidebar {
+  border: none;
+  border-top: 1px solid var(--clr-accent-b3);
+  overflow: none;
+  text-align: center;
+  height: 5px;
+  margin-top: 1rem;
+  opacity: 65%;
+}
+

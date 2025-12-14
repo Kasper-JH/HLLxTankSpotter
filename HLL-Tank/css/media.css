@@ -1,0 +1,123 @@
+@media (max-width: 1200px) {
+  .image-block.active {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .image-block.active {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media(max-width: 900px){
+  body{
+    grid-template-columns: 1fr;
+  }
+  main{
+    padding: 2em 1em 60px 1em;
+  }
+  .container{
+    border: none;
+    padding: 0;
+  }
+
+/* Keep label aligned like the others */
+.map-selector label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.map-selector .map-answer-p {
+display: none;
+}
+
+/* Make the select behave like the variation dropdown */
+.map-selector select {
+  flex: 1;
+  max-width: 180px;
+}
+
+  .line-sidebar {
+    display: none !important;
+  }
+
+  #map-select {
+    margin-bottom: var(--margin-l);
+  }
+
+  #sidebar{
+    height: 60px;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    padding: 0;
+    position: fixed;
+    top: unset;
+    bottom: 0;
+    z-index: 100;
+
+    > ul{
+      padding: 0;
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      overflow-x: scroll;
+    }
+    ul li{
+      height: 100%;
+    }
+    ul a, ul .dropdown-btn{
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      border-radius: 0;
+      justify-content: center;
+    }
+
+    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
+      display: none;
+    }
+
+    ul li .sub-menu.show{
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      box-sizing: border-box;
+      height: 60px;
+      width: 100%;
+      background-color: var(--clr-bg-a);
+      opacity: 95%;
+      border-top: 1px solid var(--clr-line-a);
+      display: flex;
+      justify-content: center;
+
+      > div{
+        overflow-x: auto;
+      }
+      li{
+        display: inline-flex;
+      }
+      a{
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+      }
+      .map-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 9rem;
+  padding: 0.1rem;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+      }
+    
+    }
+  }
+  
+}

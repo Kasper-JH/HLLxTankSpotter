@@ -1,0 +1,144 @@
+body{
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--clr-bg-a);
+  color: var(--clr-text-a0);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+main{
+padding: min(30px, 7%);
+}
+
+.container{
+  border: 1px solid var(--clr-line-b);
+  border-radius: 1em;
+  padding: min(3em, 15%);
+}
+
+.image-block {
+  display: none;
+}
+
+.image-block.active {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Each tank card */
+.tank-card {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--clr-line-b);
+  border-radius: 12px;
+  background: var(--clr-bg-b);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.9rem;
+  padding-left: 0.9rem;
+  box-shadow: var(--shadow-elevation-low);
+}
+
+/* Tank image */
+.tank-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 0.3rem;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  scale: 1;
+  transition: none;
+  transition-delay: 0ms;
+}
+
+.tank-card img:hover {
+  scale: 1.03;
+   transition:
+    scale 200ms,
+    width 200ms,
+    height 200ms 200ms,
+    z-index 200ms 200ms;
+  transition-delay: 0ms;
+}
+
+#imgFS.FS{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: auto;
+  max-height: 90vh;
+  z-index: 10;
+  transition: none;
+  mask-image: none;
+}
+
+#imgFS.FS:hover {
+  scale: none;
+  transition: none;
+}
+
+.imgFSbox {
+  background-color: var(--clr-bg-b);
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: none;
+  z-index: -1;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgFSbox.show {
+  opacity: 0.99;
+  z-index: 9;
+}
+
+/* Tank name */
+.tank-name {
+  color: var(--clr-text-a0);
+  text-align: center;
+  font: var(--h4) !important;
+}
+
+.tank-type, .tank-callsign {
+  color: var(--clr-text-a);
+  border: 2px outset var(--clr-accent-a5);
+  border-radius: 20px;
+  background: var(--clr-bg-a2);
+  padding: 0.2em;
+  display: inline-block;
+  width: calc(50% - 0.25em);
+  box-sizing: border-box;
+  font: var(--small) !important;
+  text-align: center;
+}
+
+#details {
+  color: var(--clr-text-a0);
+  font: var(--p) !important;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#details strong {
+  color: var(--clr-accent-a5);
+  font-style: normal;
+}
+
+.tank-line {
+  border: none;
+  border-top: 1px solid var(--clr-line-b);
+  overflow: none;
+}
+
