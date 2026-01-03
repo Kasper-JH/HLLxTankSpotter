@@ -32,6 +32,11 @@ function updateVariations(value){
   currentCategory = category;
   const variations = imageMap[category];
 
+  const welcomeCard = document.getElementById('welcome-card');
+  if (welcomeCard) {
+    welcomeCard.classList.add('hidden');
+  }
+
  variationButtons.innerHTML = "";
 
 Object.keys(variations).forEach((variation, index) => {
@@ -216,3 +221,4 @@ document.querySelectorAll('.map-answer').forEach(link => {
     });
   });
 });
+

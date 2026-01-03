@@ -48,11 +48,17 @@ function closeAllSubMenus(){
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  updateVariations(1);
-});
 
 // Add "loaded" class to body when page has finished loading
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
+
+  toggleSidebar();
 });
+
+const refreshButton = document.querySelector('.logo-refresh');
+
+function refreshPage() {
+  location.reload();
+}
+

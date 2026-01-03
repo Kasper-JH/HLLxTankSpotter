@@ -11,13 +11,15 @@
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/media.css">
   <link rel="stylesheet" href="css/help.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/customization.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <nav id="sidebar">
     <ul>
       <li>
-        <span class="logo">HLLxTankSpotter</span>
+        <span class="logo" class="logo-refresh" onclick="refreshPage()">HLLxTankSpotter</span>
         <button onclick=toggleSidebar() id="toggle-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
         </button>
@@ -103,10 +105,71 @@
     <span>Need Help?</span>
       </button> 
       </li>
+      <li>
+  <button onclick=toggleSubMenu(this) class="dropdown-btn">
+ <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5M12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5M1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8m9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5m1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+</svg>
+    <span>Customization</span>
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="arrow"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+  </button>
+    <ul class="sub-menu">
+          <div class="customization">
+            <p>Hide Tanks:</p>
+              <form>
+                  <input type="checkbox" name="check1" value="SPA">
+                <label for="check1"> SPA</label><br>
+                  <input type="checkbox" name="check2" value="Recon">
+                <label for="check2"> Recon</label><br>
+                  <input type="checkbox" name="check3" value="Light">
+                <label for="check3"> Light</label><br>
+                  <input type="checkbox" name="check4" value="Medium">
+                <label for="check4"> Medium</label><br>
+                  <input type="checkbox" name="check5" value="Heavy">
+                <label for="check5"> Heavy</label><br>
+              </form>
+              <p>Hide Information:</p>
+              <form>
+                  <input type="checkbox" name="check6" value="Details">
+                <label for="check6"> Details</label><br>
+                  <input type="checkbox" name="check7" value="Type">
+                <label for="check7"> Type</label><br>
+                  <input type="checkbox" name="check8" value="Callsign">
+                <label for="check8"> Callsign</label><br>
+                  <input type="checkbox" name="check9" value="Title">
+                <label for="check9"> Title</label><br>
+              </form>
+        </div>
+        </ul>
+      </li>
   </nav>
  <main>
   <div id="image-container">
-
+<!-- welcome page -->
+  <div id="welcome-card" class="welcome-card">
+    <h2>Welcome to HLLxTankSpotter!</h2>
+      <p>This tool is designed to help Hell Let Loose players quickly identify tanks based on their visual characteristics.</p>
+      <p>Get started by clicking one of the following factions below or using the sidebar.</p>
+      <p class="welcome-happy">Happy spotting!</p>
+      <div id="welcome-block" class="welcome-block">
+    <div class="welcome-card2">
+      <img src="images/AXIS.banner.jpg" onClick="updateVariations(1)" id="imgWelcome">
+      <h3>Germany</h3>
+    </div>
+    <div class="welcome-card2">
+      <img src="images/US.banner.jpg" onClick="updateVariations(2)" id="imgWelcome">
+      <h3>United States</h3>
+    </div>
+    <div class="welcome-card2">
+      <img src="images/SOVIET.banner.jpg" onClick="updateVariations(3)" id="imgWelcome">
+      <h3>Soviet Union</h3>
+    </div>
+    <div class="welcome-card2">
+      <img src="images/BRITISH.banner.jpg" onClick="updateVariations(4)" id="imgWelcome">
+      <h3>British</h3>
+      </div>
+    </div>
+  </div>
 
  <!-- German -->
   <div id="german-army-block" class="image-block">
@@ -163,7 +226,7 @@
   <div id="german-winter-block" class="image-block">
   <div class="tank-card">
     <p class="tank-name">Sturmpanzer IV Brummbär</p>
-    <img src="images/g1.jpg" onClick="imageClass(this)" id="imgFS">
+    <img src="images/gw1.jpg" onClick="imageClass(this)" id="imgFS">
       <p class="tank-type" id="tank-stuff">Type: SPA</p>
       <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
       <hr class="tank-line" />
@@ -313,7 +376,7 @@
       <p class="tank-type" id="tank-stuff">Type: SPA</p>
       <p class="tank-callsign" id="tank-stuff">Callsign: SPA</p>
       <hr class="tank-line" />
-      <p class="small" id="details"><strong>Details:</strong> Short barrel, blue stripes, star on front </p>
+      <p class="small" id="details"><strong>Details:</strong> Short barrel, star on front </p>
   </div>
   <div class="tank-card">
     <p class="tank-name">M8 Greyhound</p>
@@ -541,6 +604,12 @@
 </div>
 </main>
 
+<div class="footer" id="footer">
+  <div class="credit">
+   <p>© 2025 HLLxTankSpotter - Created by ◯ | Fjolle</p>
+  </div>
+</div>
+
 <div class="imgFSbox" id="imgFSbox" onClick="imageClassBox()">
 </div>
 
@@ -586,9 +655,11 @@
       <hr class="help-bottom"/>
     </div>
   </div>
+
   <script src="js/imgfs.js"></script>
   <script src="js/script.js"></script>
   <script src="js/map.js"></script>
   <script src="js/help.js"></script>
+  <script src="js/scroll-pc.js"></script>
 </body>
 </html>

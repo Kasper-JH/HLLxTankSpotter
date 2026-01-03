@@ -4,9 +4,18 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .welcome-card2 h3 {
+    font: var(--h4);
+  }
+}
+
 @media (max-width: 600px) {
   .image-block.active {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .welcome-card2 h3 {
+    font-size: 0.5rem;
   }
 }
 
@@ -106,18 +115,16 @@ display: none;
         justify-content: center;
       }
       .map-selector {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 9rem;
-  padding: 0.1rem;
-  vertical-align: middle;
-  margin-top: auto;
-  margin-bottom: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 9rem;
+        padding: 0.1rem;
+        vertical-align: middle;
+        margin-top: auto;
+        margin-bottom: auto;
       }
-    
     }
   }
-  
 }

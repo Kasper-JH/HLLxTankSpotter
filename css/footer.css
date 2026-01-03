@@ -1,0 +1,43 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+
+main {
+    padding-bottom: 6rem;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 250px;
+  padding: 1rem;
+  background-color: var(--clr-bg-a);
+  text-align: center;
+  border-top: 1px solid var(--clr-line-a);
+  transition: 300ms ease-in-out;
+}
+
+#sidebar.close ~ main .footer,
+body:has(#sidebar.close) .footer {
+  left: 50px; /* Width of closed sidebar */
+}
+
+@media(max-width: 900px){
+  .footer {
+    display: none;
+  }
+}

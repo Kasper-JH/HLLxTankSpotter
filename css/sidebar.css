@@ -52,6 +52,9 @@
   gap: 1em;
  
 }
+.logo{
+  cursor: pointer;
+}
 .dropdown-btn{
   width: 100%;
   text-align: left;

@@ -52,7 +52,7 @@
 --small: .75rem/1.8em var(--ff);
 --xsmall: .7rem/1.9em var(--ff);
 /* Sidebar label preset: change this to switch sidebar label sizing centrally */
---sidebar-label-font: rem/1.6em var(--ff);
+--sidebar-label-font: .8rem/1.6em var(--ff);
 
 --shadow-color: 0deg 0% 0%;
   --shadow-elevation-low:

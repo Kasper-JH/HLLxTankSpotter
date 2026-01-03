@@ -9,12 +9,80 @@ body{
 
 main{
 padding: min(30px, 7%);
+padding-bottom: 6rem;
 }
 
 .container{
   border: 1px solid var(--clr-line-b);
   border-radius: 1em;
   padding: min(3em, 15%);
+}
+
+.welcome-card {
+  display: grid;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-elevation-low);
+}
+
+.welcome-card img:hover {
+  scale: 1.02;
+   transition:
+    scale 400ms,
+    width 400ms,
+    height 400ms 400ms,
+    z-index 400ms 400ms;
+  transition-delay: 0ms;
+  filter: brightness(135%);
+}
+
+.welcome-card p {
+  color: var(--clr-text-a);
+  font: var(--big);
+  margin: 0;
+}
+
+.welcome-card .welcome-happy {
+  color: var(--clr-accent-b3);
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: var(--margin-s);
+  margin-bottom: var(--margin-m);
+}
+
+.welcome-card h2 {
+  color: var(--clr-accent-b1);
+  margin-top: var(--margin-s);
+  margin-bottom: var(--margin-m);
+}
+
+.welcome-card2 h3 {
+  margin-top: var(--margin-s);
+  margin-bottom: var(--margin-s);
+  color: var(--clr-accent-a1);
+  font: var(--h3);
+}
+
+.welcome-card.hidden {
+  display: none;
+}
+
+.welcome-block {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .image-block {
@@ -63,6 +131,13 @@ padding: min(30px, 7%);
     height 200ms 200ms,
     z-index 200ms 200ms;
   transition-delay: 0ms;
+  filter: brightness(115%);
+}
+
+.tank-card img.no-hover:hover {
+  scale: 1;
+  transition: none;
+  filter: none;
 }
 
 #imgFS.FS{
@@ -81,6 +156,7 @@ padding: min(30px, 7%);
 #imgFS.FS:hover {
   scale: none;
   transition: none;
+  filter: none;
 }
 
 .imgFSbox {
