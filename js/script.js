@@ -52,8 +52,6 @@ function closeAllSubMenus(){
 // Add "loaded" class to body when page has finished loading
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
-
-  toggleSidebar();
 });
 
 const refreshButton = document.querySelector('.logo-refresh');
