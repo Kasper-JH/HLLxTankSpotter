@@ -218,3 +218,18 @@ padding-bottom: 6rem;
   overflow: none;
 }
 
+a:link {
+  color: var(--clr-text-a0);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: var(--clr-text-a0);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--clr-accent-a3);
+  background-color: transparent;
+  text-decoration: underline;
+}
