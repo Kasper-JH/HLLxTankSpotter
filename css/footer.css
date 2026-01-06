@@ -33,7 +33,7 @@ main {
 
 #sidebar.close ~ main .footer,
 body:has(#sidebar.close) .footer {
-  left: 50px; /* Width of closed sidebar */
+  left: 50px; 
 }
 
 @media(max-width: 900px){

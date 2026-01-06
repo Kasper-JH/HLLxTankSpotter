@@ -20,7 +20,7 @@ window.addEventListener('keydown', function (event) {
             img.classList.add("no-hover");
         });
         
-        // Remove no-hover class after a short delay
+        
         setTimeout(() => {
             imgAll.forEach(img => img.classList.remove("no-hover"));
         }, 150);

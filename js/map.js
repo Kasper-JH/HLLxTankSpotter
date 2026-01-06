@@ -1,4 +1,4 @@
-// Main controls
+
 const variationButtons = document.getElementById('variation-buttons');
 
 // Image map data
@@ -24,7 +24,7 @@ const imageMap = {
 
 let currentCategory = '1';
 let currentVariation = '';
-let fromMapBlock = false; // Flag to track if the faction is selected from the map block
+let fromMapBlock = false; 
 
 // Update variations
 function updateVariations(value){
@@ -49,17 +49,16 @@ Object.keys(variations).forEach((variation, index) => {
   a.dataset.var = variation;
 
   if (!variations[variation]) {
-    // anchors can't be disabled, so use aria + tabindex for accessibility
     a.setAttribute('aria-disabled', 'true');
     a.tabIndex = -1;
     a.classList.add('variation-disabled');
   } else {
     a.addEventListener('click', (e) => {
-      e.preventDefault();               // stop the '#' jump
+      e.preventDefault();               
       showImage(category, variation);
       currentVariation = variation;
 
-      // remove active class from all variation links (adjust selector if needed)
+      
       document.querySelectorAll('#variation-buttons .variation-link')
         .forEach(b => b.classList.remove('active'));
 
@@ -70,19 +69,22 @@ Object.keys(variations).forEach((variation, index) => {
   li.appendChild(a);
   variationButtons.appendChild(li);
 
-  // Auto-select first variation if valid and not from map
+  
   if (!fromMapBlock && index === 0 && variations[variation]) {
-    // trigger the anchor click (same handler will run)
     a.click();
   }
 });
 
+  enableSubMenus();
+
+ if (fromMapBlock==false) {
+  toggleSubMenu(submenu2);
+ }
 
   fromMapBlock = false;
-  toggleSubMenu(submenu2);
 }
 
-// Show the image based on the selected variation
+
 function showImage(category, variation) {
 
   document.querySelectorAll('.image-block').forEach(block => {
@@ -99,7 +101,7 @@ function showImage(category, variation) {
   }
 }   
 
-// Map-selector feature
+
 const mapSelect = document.getElementById('map-select');
 const mapResult = document.getElementById('map-result');
 
@@ -209,7 +211,7 @@ mapSelect.addEventListener('change', () => {
 document.querySelectorAll('.map-answer').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-      fromMapBlock = true; // Set flag to indicate the selection is from the map block
+      fromMapBlock = true; 
 
       updateVariations(link.dataset.cat);
 
@@ -222,3 +224,21 @@ document.querySelectorAll('.map-answer').forEach(link => {
   });
 });
 
+function enableSubMenus() {
+  const variationBtn = document.querySelector('#variation');
+  const customizationBtn = document.querySelector('#customization');
+  
+  if (variationBtn) {
+    variationBtn.disabled = false;
+    variationBtn.style.opacity = '1';
+    variationBtn.style.cursor = 'pointer';
+    variationBtn.removeAttribute('title');
+  }
+  
+  if (customizationBtn) {
+    customizationBtn.disabled = false;
+    customizationBtn.style.opacity = '1';
+    customizationBtn.style.cursor = 'pointer';
+    customizationBtn.removeAttribute('title');
+  }
+}

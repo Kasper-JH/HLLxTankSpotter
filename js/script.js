@@ -1,4 +1,4 @@
-// Main controls
+
 const toggleButton = document.getElementById('toggle-btn')
 const sidebar = document.getElementById('sidebar')
 const submenu2 = document.getElementById('variation')
@@ -49,7 +49,7 @@ function closeAllSubMenus(){
 }
 
 
-// Add "loaded" class to body when page has finished loading
+
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
@@ -60,3 +60,24 @@ function refreshPage() {
   location.reload();
 }
 
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+  
+  
+  const variationBtn = document.querySelector('#variation');
+  const customizationBtn = document.querySelector('#customization');
+  
+  if (variationBtn) {
+    variationBtn.disabled = true;
+    variationBtn.style.opacity = '0.5';
+    variationBtn.style.cursor = 'help';
+    variationBtn.title = 'Select a Faction to unlock this feature';
+  }
+  
+  if (customizationBtn) {
+    customizationBtn.disabled = true;
+    customizationBtn.style.opacity = '0.5';
+    customizationBtn.style.cursor = 'help';
+    customizationBtn.title = 'Select a Faction to unlock this feature';
+  }
+});

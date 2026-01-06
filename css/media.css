@@ -31,7 +31,7 @@
     padding: 0;
   }
 
-/* Keep label aligned like the others */
+
 .map-selector label {
   margin: 0;
   white-space: nowrap;
@@ -41,7 +41,7 @@
 display: none;
 }
 
-/* Make the select behave like the variation dropdown */
+
 .map-selector select {
   flex: 1;
   max-width: 180px;
@@ -57,10 +57,10 @@ display: none;
 
   #sidebar{
     height: 60px;
-    width: 100%;
+    width: 100% !important;
     border-right: none;
     border-top: 1px solid var(--line-clr);
-    padding: 0;
+    padding: 0 !important;
     position: fixed;
     top: unset;
     bottom: 0;

@@ -67,7 +67,7 @@
   vertical-align: middle;
 }
 
-/* Sidebar label spans use the centralized preset */
+
 #sidebar a span, #sidebar .dropdown-btn span, #sidebar .sub-menu a span {
   flex-grow: 1;
   font: var(--sidebar-label-font);
@@ -90,7 +90,11 @@
   grid-template-rows: 1fr;
 }
 
-/* ensure no :before/:after pseudo-elements are visible */
+#sidebar .dropdown-btn.rotate svg:first-child {
+  fill: var(--clr-accent-b3);
+}
+
+
 #sidebar .sub-menu::before,
 #sidebar .sub-menu::after {
   display: none !important;
@@ -118,7 +122,7 @@
   background-color: var(--clr-bg-a1);
 }
 
-/* Style the <select> so it matches other UI elements */
+
 .map-selector select {
   width: 100%;
   background-color: var(--clr-bg-b1);
@@ -129,7 +133,7 @@
   padding: 0.25rem;
   cursor: pointer;
   outline: none;
-  appearance: none;       /* Removes default OS arrow */
+  appearance: none;       
   margin-top: var(--margin-s);
   margin-bottom: var(--margin-m);
 }
@@ -139,7 +143,7 @@
   font-style: italic !important;
   margin-top: var(--margin-xs) !important;
 }
-/* Hover + focus states (same style as sidebar buttons) */
+
 .map-selector select:hover {
   background-color: var(--clr-bg-b2);
 }
