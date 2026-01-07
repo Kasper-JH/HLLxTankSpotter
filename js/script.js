@@ -81,21 +81,3 @@ window.addEventListener('load', () => {
     customizationBtn.title = 'Select a Faction to unlock this feature';
   }
 });
-
-window.addEventListener('hashchange', handleRoute);
-window.addEventListener('load', handleRoute);
-
-function handleRoute() {
-  const hash = window. location.hash. slice(2); // Remove "#/"
-  
-  const routes = {
-    'german': 1,
-    'united-states':  2,
-    'soviet-union': 3,
-    'british': 4
-  };
-  
-  if (routes[hash]) {
-    updateVariations(routes[hash]);
-  }
-}
