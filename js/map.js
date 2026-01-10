@@ -229,16 +229,18 @@ function enableSubMenus() {
   const customizationBtn = document.querySelector('#customization');
   
   if (variationBtn) {
-    variationBtn.disabled = false;
+    variationBtn.classList.remove('disabled-menu');
     variationBtn.style.opacity = '1';
     variationBtn.style.cursor = 'pointer';
+    variationBtn.style.pointerEvents = 'auto';
     variationBtn.removeAttribute('title');
   }
   
   if (customizationBtn) {
-    customizationBtn.disabled = false;
+    customizationBtn.classList.remove('disabled-menu');
     customizationBtn.style.opacity = '1';
     customizationBtn.style.cursor = 'pointer';
+    customizationBtn.style.pointerEvents = 'auto';
     customizationBtn.removeAttribute('title');
   }
 }

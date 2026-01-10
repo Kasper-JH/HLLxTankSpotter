@@ -68,16 +68,18 @@ window.addEventListener('load', () => {
   const customizationBtn = document.querySelector('#customization');
   
   if (variationBtn) {
-    variationBtn.disabled = true;
+    variationBtn.classList.add('disabled-menu');
     variationBtn.style.opacity = '0.5';
     variationBtn.style.cursor = 'help';
+    variationBtn.style.pointerEvents = 'none';
     variationBtn.title = 'Select a Faction to unlock this feature';
   }
   
   if (customizationBtn) {
-    customizationBtn.disabled = true;
+    customizationBtn.classList.add('disabled-menu');
     customizationBtn.style.opacity = '0.5';
     customizationBtn.style.cursor = 'help';
+    customizationBtn.style.pointerEvents = 'none';
     customizationBtn.title = 'Select a Faction to unlock this feature';
   }
 });
