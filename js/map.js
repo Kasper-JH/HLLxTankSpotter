@@ -225,6 +225,8 @@ document.querySelectorAll('.map-answer').forEach(link => {
 });
 
 function enableSubMenus() {
+  window.factionSelected = true; 
+  
   const variationBtn = document.querySelector('#variation');
   const customizationBtn = document.querySelector('#customization');
   

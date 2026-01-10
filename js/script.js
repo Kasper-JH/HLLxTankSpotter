@@ -60,6 +60,8 @@ function refreshPage() {
   location.reload();
 }
 
+let factionSelected = false;
+
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
   
@@ -67,7 +69,7 @@ window.addEventListener('load', () => {
   const variationBtn = document.querySelector('#variation');
   const customizationBtn = document.querySelector('#customization');
   
-  if (variationBtn) {
+  if (variationBtn && !factionSelected) {
     variationBtn.classList.add('disabled-menu');
     variationBtn.style.opacity = '0.5';
     variationBtn.style.cursor = 'help';
@@ -75,7 +77,7 @@ window.addEventListener('load', () => {
     variationBtn.title = 'Select a Faction to unlock this feature';
   }
   
-  if (customizationBtn) {
+  if (customizationBtn && !factionSelected) {
     customizationBtn.classList.add('disabled-menu');
     customizationBtn.style.opacity = '0.5';
     customizationBtn.style.cursor = 'help';
