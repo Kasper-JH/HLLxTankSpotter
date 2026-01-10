@@ -48,28 +48,21 @@ function closeAllSubMenus(){
   })
 }
 
-
-
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
-
 const refreshButton = document.querySelector('.logo-refresh');
 
 function refreshPage() {
   location.reload();
 }
 
-let factionSelected = false;
+window.factionSelected = false;
 
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
   
-  
   const variationBtn = document.querySelector('#variation');
   const customizationBtn = document.querySelector('#customization');
   
-  if (variationBtn && !factionSelected) {
+  if (variationBtn && !window.factionSelected) {
     variationBtn.classList.add('disabled-menu');
     variationBtn.style.opacity = '0.5';
     variationBtn.style.cursor = 'help';
@@ -77,7 +70,7 @@ window.addEventListener('load', () => {
     variationBtn.title = 'Select a Faction to unlock this feature';
   }
   
-  if (customizationBtn && !factionSelected) {
+  if (customizationBtn && !window.factionSelected) {
     customizationBtn.classList.add('disabled-menu');
     customizationBtn.style.opacity = '0.5';
     customizationBtn.style.cursor = 'help';
